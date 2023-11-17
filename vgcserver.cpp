@@ -119,6 +119,7 @@ class VGCServer
 
 		char* readSocket(int new_socket)
 		{
+			memset(buffer, '\0', sizeof(buffer));
 			ssize_t valread = read(new_socket, buffer, 1024-1); 
 			// subtract 1 for the null terminator at the end
 
@@ -150,9 +151,9 @@ while(1)
 
 	buffer = 
 	vserver.readSocket(new_socket);
-	std::cout<< buffer << std::endl;
+	std::cout<< "main() " << buffer << std::endl;
 
-	std::cout << strcmp(buffer, "Jai Maa MahaKaali!!!") << std::endl;
+	std::cout << "main() " << strcmp(buffer, "Jai Maa MahaKaali!!!") << std::endl;
 	if(strcmp(buffer, "Jai Maa MahaKaali!!!") == 0)
 	{ break; }
 
